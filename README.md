@@ -1,38 +1,30 @@
-# create-svelte
+# SvelteSocket
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A small test repo playing with different ways to integrate sveltekit with various other techs like ExpressJs and Socket.io.
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+# Experiments
+1. Express as Vite Middleware
+Right now, we're playing with `vite-plugin-mix` which takes the `app` object from an express server and transforms it into Vite middleware. It currently has a bug during the build step, so we're waiting on that.
 
+2. Typescript Websockets
+`Socket.io` plays nicely as Vite plugin already. See `$lib/socket.ts`. 
+
+3. Sveltekit as Express middleware, but without having to build during dev
+Haven't dug into this part much yet. Ideas/questions:
+* Can we import `handler` from the `.svelte-kit` folder in dev?
+* Can we extend nodemon's watch directory so it restarts when changes are made in sveltekit?
+
+# Dev
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+yarn install
 
-# create a new project in my-app
-npm create svelte@latest my-app
+yarn dev
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+# Building
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# This currently throws an error. TODO: I'll find the github issue later.
+yarn build 
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
